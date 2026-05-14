@@ -1,0 +1,18 @@
+# Core web framework
+flask>=2.0.0,<3.0.0
+
+# Computer vision & camera
+opencv-python>=4.5.0,<5.0.0
+
+# Pose estimation (Python 3.8–3.11 ONLY — 3.12+ NOT supported)
+mediapipe>=0.10.0,<0.11.0
+
+# Numerical computing
+numpy>=1.21.0,<2.0.0
+
+# YAML parsing for exercise definitions
+pyyaml>=6.0.0
+
+# Video I/O and H.264 encoding for browser-compatible video output
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.8

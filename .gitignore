@@ -1,0 +1,79 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual Environment ──────────────────────────────────
+venv/
+env/
+.venv/
+ENV/
+
+# ── IDE / Editor ─────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+
+# ── Project data & output (large binary files) ───────────
+data/
+output/images/
+output/*.mp4
+output/*.avi
+*.swp
+*.swo
+*~
+
+# ── OS ───────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── Project — generated files ─────────────────────────────
+uploads/
+output/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Video / media uploads (user content) ──────────────────
+uploads/*.mp4
+uploads/*.avi
+uploads/*.mov
+uploads/*.webm
+uploads/*.mkv
+uploads/*_processed.*
+uploads/*_results.json
+
+# ── Test / debug artifacts ────────────────────────────────
+test_output/
+debug_frames/
+
+# ── Environment variables ─────────────────────────────────
+.env
+.env.local
+.env.production
+
+# ── Jupyter ───────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Coverage / testing ────────────────────────────────────
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/

@@ -1,0 +1,516 @@
+/* ============================================================
+   Video Analysis CSS — FitAI Premium Dark
+   ============================================================ */
+
+.analysis-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  padding-bottom: 32px;
+  align-items: start;
+}
+
+/* ── Video Panel ── */
+.video-panel { display: flex; flex-direction: column; gap: 16px; }
+
+.video-container {
+  background: #0d0d14;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 380px;
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+
+.upload-area {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+  border: 2px dashed rgba(99,102,241,0.25);
+  border-radius: var(--radius-lg);
+  margin: 16px;
+  padding: 40px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.upload-area:hover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.04);
+}
+
+.upload-icon {
+  width: 72px; height: 72px;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+}
+
+.upload-area h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.upload-area p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+#video-player {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+#analysis-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ── Video Controls ── */
+.video-controls {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+#progress-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 38px;
+  text-align: right;
+}
+
+.control-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.control-buttons .btn {
+  font-size: 0.78rem;
+  padding: 9px 8px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.control-buttons .btn:hover:not(:disabled) {
+  background: rgba(99,102,241,0.12);
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+/* ── Analysis Panel ── */
+.analysis-panel { display: flex; flex-direction: column; gap: 16px; }
+
+.section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: border-color var(--transition);
+}
+
+.section:hover { border-color: var(--border-active); }
+
+.section h2 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section h2::before {
+  content: '';
+  display: block;
+  width: 3px; height: 13px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent2));
+  border-radius: 2px;
+}
+
+/* ── Exercise Dropdown ── */
+.exercise-dropdown {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.exercise-dropdown:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.exercise-dropdown option { background: #1a1a2e; color: var(--text-primary); }
+
+.exercise-info-mini {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: var(--radius-sm);
+  animation: slideIn 0.2s ease;
+}
+
+.exercise-info-mini.hidden { display: none; }
+
+.mini-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: rgba(99,102,241,0.2);
+  color: var(--accent-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+#mini-description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Stats Grid ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.stat-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  display: block;
+  line-height: 1;
+}
+
+.stat-value.grade {
+  font-size: 1.6rem;
+}
+
+.stat-value.small {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ── Gauge ── */
+.gauge-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.gauge {
+  width: 100%;
+  max-width: 200px;
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: url(#gaugeGrad);
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.gauge-value {
+  position: absolute;
+  bottom: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-light), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Feedback Log ── */
+.feedback-log {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feedback-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  align-items: flex-start;
+  animation: fadeSlide 0.3s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.feedback-item.info {
+  background: rgba(99,102,241,0.08);
+  border-left: 3px solid var(--accent);
+}
+
+.feedback-item.warning {
+  background: rgba(245,158,11,0.08);
+  border-left: 3px solid var(--warning);
+}
+
+.feedback-item.success {
+  background: rgba(16,185,129,0.08);
+  border-left: 3px solid var(--success);
+}
+
+.feedback-time {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.feedback-text { color: var(--text-secondary); line-height: 1.4; }
+
+/* ── Report Section ── */
+.report-section.hidden { display: none; }
+
+.report-content {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Terminal ── */
+.terminal-section {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-controls { display: flex; align-items: center; gap: 10px; }
+
+.terminal-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.terminal-status.active { color: var(--success); }
+
+.terminal-toggle {
+  width: 24px; height: 24px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+}
+
+.terminal-toggle:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+
+.terminal-body {
+  background: #070710;
+  max-height: 220px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.terminal-body.collapsed { max-height: 0; }
+
+.terminal-content {
+  padding: 14px 18px;
+  overflow-y: auto;
+  max-height: 220px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.log-line { display: flex; gap: 10px; }
+.log-line.info    { color: #6d9fff; }
+.log-line.success { color: #34d399; }
+.log-line.warning { color: #fbbf24; }
+.log-line.error   { color: #f87171; }
+
+/* ── Report Rows (generated by JS showReport()) ── */
+.report-content .report-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.85rem;
+}
+
+.report-content .report-row:last-child { border-bottom: none; }
+
+.report-content .report-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.report-content .report-value {
+  color: var(--accent-light);
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ── Upload Dragover State ── */
+.upload-area.dragover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.08);
+  transform: scale(1.01);
+}
+
+/* ── Extra Terminal Log Types (used by video_analysis.js) ── */
+.log-line.processing { color: #a78bfa; }
+.log-line.progress   { color: #38bdf8; }
+
+/* ── Grade classes on stat-value (set by JS) ── */
+.stat-value.grade-a { color: #34d399; }
+.stat-value.grade-b { color: var(--accent-light); }
+.stat-value.grade-c { color: #fbbf24; }
+.stat-value.grade-d { color: #fb923c; }
+.stat-value.grade-f { color: #f87171; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .analysis-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .control-buttons { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
